@@ -4,7 +4,9 @@ use YenePay\Models\CheckoutOptions;
 use YenePay\Models\CheckoutItem;
 use YenePay\CheckoutHelper;
 
-require(__DIR__ .'/vendor/yenepay/php-sdk/CheckoutHelper.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/CheckoutHelper.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/CheckoutOptions.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/CheckoutItem.php');
 
 	$sellerCode = "YOUR_YENEPAY_SELLER_CODE";
 	$successUrl = "http://localhost:81/sampleshop/success.php"; //"YOUR_SUCCESS_URL";

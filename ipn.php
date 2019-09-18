@@ -2,14 +2,16 @@
 
 use YenePay\Models\IPN;
 use YenePay\CheckoutHelper;
+use YenePay\Models\CheckoutType;
 
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/CheckoutHelper.php');
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/Models/IPN.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/CheckoutHelper.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/IPN.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/Enums.php');
 
 $ipnModel = new IPN();
 $ipnModel->setUseSandbox(true);
 
-$json_data = $_POST;
+$json_data = json_decode(file_get_contents('php://input'), true);
 
 if(isset($json_data["TotalAmount"]))
 	$ipnModel->setTotalAmount($json_data["TotalAmount"]);
@@ -31,7 +33,6 @@ if(isset($json_data["Currency"]))
 	$ipnModel->setCurrency($json_data["Currency"]);
 if(isset($json_data["Signature"]))
 	$ipnModel->setSignature($json_data["Signature"]);
-
 
 $helper = new CheckoutHelper();
 if ($helper->isIPNAuthentic($ipnModel))

@@ -2,9 +2,13 @@
 
 use YenePay\Models\CheckoutOptions;
 use YenePay\Models\CheckoutItem;
+use YenePay\Models\CheckoutType;
 use YenePay\CheckoutHelper;
 
-require(__DIR__ .'/vendor/yenepay/php-sdk/CheckoutHelper.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/CheckoutHelper.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/CheckoutOptions.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/CheckoutItem.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/Enums.php');
 
 	$sellerCode = "YOUR_YENEPAY_SELLER_CODE";
 	$successUrl = "http://localhost:81/sampleshop/success.php"; //"YOUR_SUCCESS_URL";
@@ -13,6 +17,7 @@ require(__DIR__ .'/vendor/yenepay/php-sdk/CheckoutHelper.php');
 	$useSandbox = true; // set this to false if you are on production environment
 	
 	$checkoutOptions = new CheckoutOptions($sellerCode, $useSandbox);
+	$checkoutOptions -> setProcess(CheckoutType::Cart);
 	$checkoutOptions -> setSuccessUrl($successUrl);
 	$checkoutOptions -> setCancelUrl($cancelUrl);
 	$checkoutOptions -> setIPNUrl($ipnUrl);

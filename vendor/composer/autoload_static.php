@@ -4,15 +4,28 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7438b85f6f19845dce2c814617a3c253
+class ComposerStaticInita336e80bd661a1dd94c0e77ac18f1ff9
 {
+    public static $prefixLengthsPsr4 = array (
+        'Y' => 
+        array (
+            'YenePay\\' => 8,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'YenePay\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yenepay/php-sdk/src',
+        ),
+    );
+
     public static $prefixesPsr0 = array (
         'R' => 
         array (
             'Requests' => 
             array (
-                0 => __DIR__ . '/../..' . '/library',
-                1 => __DIR__ . '/..' . '/rmccue/requests/library',
+                0 => __DIR__ . '/..' . '/rmccue/requests/library',
             ),
         ),
     );
@@ -20,7 +33,9 @@ class ComposerStaticInit7438b85f6f19845dce2c814617a3c253
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInit7438b85f6f19845dce2c814617a3c253::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita336e80bd661a1dd94c0e77ac18f1ff9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita336e80bd661a1dd94c0e77ac18f1ff9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita336e80bd661a1dd94c0e77ac18f1ff9::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

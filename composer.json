@@ -1,11 +1,5 @@
 {
     "require": {
-        "rmccue/requests": ">=1.0",
         "yenepay/php-sdk" : "dev-master"
-    },
-    "autoload": {
-        "psr-0": {
-			"Requests": "library/"
-		}
     }
 }

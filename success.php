@@ -3,8 +3,8 @@
 use YenePay\Models\PDT;
 use YenePay\CheckoutHelper;
 
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/CheckoutHelper.php');
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/Models/PDT.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/CheckoutHelper.php');
+require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/PDT.php');
 
 $pdtToken = "YOUR_PDT_KEY_HERE";
 $pdtRequestType = "PDT";
