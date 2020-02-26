@@ -21,7 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <p id="index-p">#Items: </p>
-                <img id="index-para" src="images/images.jpg" style="width:50px;height:50px" />
+                <img id="index-para" src="images/cart+.jpg" style="width:50px;height:50px" />
                 <ul class="nav navbar-nav">
                     <li><a href="index.html">Buy Single Item</a></li>
                     <li><a href="cart.html">Buy Multiple Items</a></li>
@@ -36,7 +36,7 @@
 				<div class="row">
 					<form method="post" action="process.php">
 						<div class="col-xs-4">
-							<img src="images/images (1).jpg" class="col-xs-6" />
+							<img src="images/product-1.jpg" class="col-xs-6" />
 							<div class="col-xs-6 text-left">
 								<input type="hidden" name="ItemId" value="001" />
 								<input type="hidden" name="ItemName" value="Sample Item 1" />
@@ -56,7 +56,7 @@
 					</form>
 					<form method="post" action="process.php">
 						<div class="col-xs-4">
-							<img src="images/images (2).jpg" class="col-xs-6" />
+							<img src="images/product-2.jpg" class="col-xs-6" />
 							<div class="col-xs-6 text-left">
 								<input type="hidden" name="ItemId" value="002" />
 								<input type="hidden" name="ItemName" value="Sample Item 2" />
@@ -76,7 +76,7 @@
 					</form>
 					<form method="post" action="process.php">
 						<div class="col-xs-4">
-							<img src="images/images (3).jpg" class="col-xs-6" />
+							<img src="images/product-3.jpg" class="col-xs-6" />
 							<div class="col-xs-6 text-left">
 								<input type="hidden" name="ItemName" value="Sample Item 3" />
 								<input type="hidden" name="UnitPrice" value="3000">
