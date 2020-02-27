@@ -17,14 +17,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand">Sample Shop Application</a>
+            <a href="/" class="navbar-brand">Sample Shop Application</a>
         </div>
         <div class="navbar-collapse collapse">
             <p id="index-p">#Items: </p>
             <img id="index-para" src="images/cart+.jpg" style="width:50px;height:50px"/>
             <ul class="nav navbar-nav">
-                <li><a href="index.html">Buy Single Item</a></li>
-                <li><a href="cart.html">Buy Multiple Items</a></li>
+                <li><a href="/">Buy Single Item</a></li>
+                <li><a href="/cart.php">Buy Multiple Items</a></li>
             </ul>
         </div>
     </div>
@@ -135,6 +135,14 @@
     </form>
 </div>
 
+<?php
+/**
+ * TODO: this is ugly, deal with it
+ */
+require __DIR__ . '/vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+?>
 <script type="text/javascript">
     var cartUrl = "<?php rtrim($_ENV['BASE_URL'], '/') ?>/process_cart.php";
 </script>
