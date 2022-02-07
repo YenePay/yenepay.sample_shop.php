@@ -1,44 +1,35 @@
 <?php
 
-use YenePay\Models\CheckoutOptions;
-use YenePay\Models\CheckoutItem;
-use YenePay\Models\CheckoutType;
+require __DIR__ . '/vendor/autoload.php';
+
 use YenePay\CheckoutHelper;
+use YenePay\Models\CheckoutItem;
+use YenePay\Models\CheckoutOptions;
+use YenePay\Models\CheckoutType;
 
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/CheckoutHelper.php');
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/CheckoutOptions.php');
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/CheckoutItem.php');
-require_once(__DIR__ .'/vendor/yenepay/php-sdk/src/Models/Enums.php');
+include_once "_config.php";
 
-	$sellerCode = "YOUR_YENEPAY_SELLER_CODE";
-	$successUrl = "http://localhost:81/sampleshop/success.php"; //"YOUR_SUCCESS_URL";
-	$cancelUrl = "http://localhost:81/sampleshop/cancel.php"; //"YOUR_CANCEL_URL";
-	$ipnUrl = "http://localhost:81/sampleshop/ipn.php"; //"YOUR_IPN_URL";
-	$useSandbox = true; // set this to false if you are on production environment
-	
-	$checkoutOptions = new CheckoutOptions($sellerCode, $useSandbox);
-	$checkoutOptions -> setProcess(CheckoutType::Cart);
-	$checkoutOptions -> setSuccessUrl($successUrl);
-	$checkoutOptions -> setCancelUrl($cancelUrl);
-	$checkoutOptions -> setIPNUrl($ipnUrl);
-	
-	$checkoutOptions -> setTotalItemsDeliveryFee(30);
-	
-	$data = json_decode(file_get_contents('php://input'), true);
-	$checkoutOrderArray = $data['Items'];
+$checkoutOptions = new CheckoutOptions($sellerCode, $useSandbox);
+$checkoutOptions->setProcess(CheckoutType::Cart);
+$checkoutOptions->setSuccessUrl($successUrl);
+$checkoutOptions->setCancelUrl($cancelUrl);
+$checkoutOptions->setIPNUrl($ipnUrl);
+$checkoutOptions->setTotalItemsDeliveryFee(30);
 
-	$checkoutOrderItems = array();
-	foreach($checkoutOrderArray as $key=>$value)
-	{
-		$item = new CheckoutItem();
-		$checkoutOrderItems[$key] = $item->getFromArray($value);
-	}
+$data               = json_decode(file_get_contents('php://input'), true);
+$checkoutOrderArray = $data['Items'];
 
-	$checkoutHelper = new CheckoutHelper();
-	$checkoutUrl = $checkoutHelper -> getCartCheckoutUrl($checkoutOptions, $checkoutOrderItems);
+$checkoutOrderItems = array();
+foreach ($checkoutOrderArray as $key => $value) {
+    $item                     = new CheckoutItem();
+    $checkoutOrderItems[$key] = $item->getFromArray($value);
+}
 
-	$obj = array("redirectUrl" => $checkoutUrl);
-	$result = json_encode($obj);
-	header("Content-type: application/json");
-	echo $result;
+$checkoutHelper = new CheckoutHelper();
+$checkoutUrl    = $checkoutHelper->getCartCheckoutUrl($checkoutOptions, $checkoutOrderItems);
+
+$obj    = array("redirectUrl" => $checkoutUrl);
+$result = json_encode($obj);
+header("Content-type: application/json");
+echo $result;
 ?>																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							

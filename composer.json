@@ -1,5 +1,7 @@
 {
-    "require": {
-        "yenepay/php-sdk" : "dev-master"
-    }
+  "require": {
+    "yenepay/php-sdk": "dev-master",
+    "vlucas/phpdotenv": "^4.1",
+    "ext-json": "*"
+  }
 }
